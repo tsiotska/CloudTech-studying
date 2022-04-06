@@ -10,6 +10,9 @@
 ## Established SSH connection with public key
 #### Remote server
 ![](screenshoots/pubkey_server.png)
+
+ ```user@DESKTOP-V7R5J56:~/.ssh$ cat uploaded_key.pub >> authorization_keys```
+ 
 ![](screenshoots/sshd_config2.png)
 #### Client
 ![](screenshoots/scp_client.png)
