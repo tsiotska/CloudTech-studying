@@ -1,19 +1,44 @@
-## Ubuntu and Kali as Windows subsystems installed
-![](screenshoots/Ubuntu.png)
+<details>
+<summary>Ubuntu and Kali as Windows subsystems installed</summary>
+
+![](screenshoots/Ubuntu.png)&nbsp;
 ![](screenshoots/Debian.png)
-## Established SSH connection with cleartext password authN 
+</details>
+&nbsp;
+
+<details>
+<summary>
+Established SSH connection with cleartext password authN
+</summary>
+
 #### Remote server
-![](screenshoots/sshd_config.png)
+```diff
+! Set PasswordAuth to Yes
+```
+![](screenshoots/sshd_config.png)&nbsp;
 ![](screenshoots/ssh-server.png)
 #### Client
 ![](screenshoots/client_access.png)
-## Established SSH connection with public key
+</details>
+&nbsp;
+
+<details>
+<summary>
+Established SSH connection with public key
+</summary>
+
+#### Client
+![](screenshoots/scp_client.png)&nbsp;
+
 #### Remote server
 ![](screenshoots/pubkey_server.png)
-
- ```user@DESKTOP-V7R5J56:~/.ssh$ cat uploaded_key.pub >> authorization_keys```
- 
+```diff
+! It's important to create authorized_keys file containing keys
+user@DESKTOP-V7R5J56:~/.ssh$ cat uploaded_key.pub >> authorized_keys
+```
+&nbsp;
 ![](screenshoots/sshd_config2.png)
+
 #### Client
-![](screenshoots/scp_client.png)
 ![](screenshoots/client_pubkey-access.png)
+</details>
