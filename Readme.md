@@ -1,5 +1,4 @@
 <details>
-
 <summary>Ubuntu and Kali as Windows subsystems installed</summary>
 
 ![](screenshoots/Ubuntu.png)
