@@ -51,16 +51,46 @@
 We use the > symbol to redirect the output of a command. For example, to create a file called list1 containing a list of
 fruit, type
 
-```cat > list1```
+```$ cat > list1```
 
 Then type in the names of some fruit. Press [Return] after each one.
 
-```orange banana apple ^D (Control D to stop)```
+```> orange banana apple ^D (Control D to stop)```
 
 What happens is the cat command reads the standard input (the keyboard) and the > redirects the output, which normally
 goes to the screen, into a file called list1 To read the contents of the file, type
 
-```cat list1```
+```$ cat list1```
+
+---
+
+### Redirecting the Output 
+
+---
+
+Use the < symbol to redirect the input of a command. 
+The command ```sort``` alphabetically or numerically sorts a list. 
+Type
+
+```$ sort```
+
+Then type in the names of some vegetables. Press [Return] after each one.
+
+```carrot beetroot artichoke ^D (Control D to stop)```
+
+The output will be
+
+```artichoke beetroot carrot```
+
+Using < you can redirect the input to come from a file rather than the keyboard. For example, to sort the list of fruit, type
+
+```$ sort < biglist```
+
+and the sorted list will be output to the screen. To output the sorted list to a file, type,
+
+```$ sort < biglist > slist```
+
+Use cat to read the contents of the file slist
 
 ---
 
