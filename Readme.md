@@ -1,9 +1,9 @@
 <details>
 <summary>Ubuntu and Kali as Windows subsystems installed</summary>
 
-![](screenshoots/Ubuntu.png)
+![](screenshots/Ubuntu.png)
 <br/>
-![](screenshoots/Debian.png)
+![](screenshots/Debian.png)
 </details>
 <br/>
 
@@ -16,11 +16,11 @@ Established SSH connection with cleartext password authN
 ```diff
 ! Set PasswordAuth to Yes
 ```
-![](screenshoots/sshd_config.png)
+![](screenshots/sshd_config.png)
 <br/>
-![](screenshoots/ssh-server.png)
+![](screenshots/ssh-server.png)
 #### Client
-![](screenshoots/client_access.png)
+![](screenshots/client_access.png)
 </details>
 <br/>
 
@@ -30,20 +30,21 @@ Established SSH connection with public key
 </summary>
 
 #### Client
-![](screenshoots/scp_client.png)
+![](screenshots/scp_client.png)
 <br/>
 
 #### Remote server
-![](screenshoots/pubkey_server.png)
+![](screenshots/pubkey_server.png)
 ```diff
 ! It's important to create authorized_keys file containing keys
 user@DESKTOP-V7R5J56:~/.ssh$ cat uploaded_key.pub >> authorized_keys
 ```
 <br/>
-![](screenshoots/sshd_config2.png)
+
+![](screenshots/sshd_config2.png)
 
 #### Client
-![](screenshoots/client_pubkey-access.png)
+![](screenshots/client_pubkey-access.png)
 </details>
 <br/>
 
@@ -59,6 +60,6 @@ and some system administrators and IT professionals use it for opening backdoors
 It can also be abused by hackers and malware to open access from the Internet to the internal network.
 </p>
 
-![](screenshoots/port-forwarding.png)
+![](screenshots/port-forwarding.png)
 </details>
 
