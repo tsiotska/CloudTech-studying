@@ -3,12 +3,12 @@
 <details>
 <summary>Nginx configuration</summary>
 
-```nginx/sites-available/default```
+`nginx/sites-available/default`
 
-Here i have two locations: '/' to service static
-and '/api/' to service dynamic content in accordance 
+> Here i have two locations: `/` to service static
+and `/api/` to service dynamic content in accordance 
 
-'/api/' is proxying to 3000 port of localhost, there i'm gonna run backend application
+> `/api/` is proxying to `3000` port of `localhost`, there i'm gonna run backend application
 
 It doesn't have any CORS configured yet
 
@@ -24,7 +24,7 @@ It doesn't have any CORS configured yet
 <details>
 <summary>Node express init</summary>
 
-I should install http-server, that is Express.js, 
+> I should install http-server, that is Express.js, 
 so my backend application could handle http requests
 
 Make sure there're node.js installed in system
@@ -47,45 +47,49 @@ Verification whether it runs
 
 ![](screenshots/express/mv_express.png)
 
-Accessed localhost/api, after restarting both nginx and node 
+Localhost/api, after restarting both nginx and node 
 
 ![](screenshots/express/api_res.png)
 
 
 ### Amplified backend by enabling ES6 and hot reloading
 
-ES6 code should be transpiled to ES5 so node could interpret it, 
+> ES6 code should be transpiled to ES5 so node could interpret it, 
 so i'm gonna use 'babel' (note: there's a little configuration skipped)
 
 ![](screenshots/express/babel.png)
 
-As hot module replacement tool i used 'nodemon'.
+> As hot module replacement tool i used 'nodemon'.
 It's incredibly important during development
 
-Thus i have next scripts: 
+```diff 
++ Thus i have next scripts:
+```
 
-* ```npm run build``` - to transpile code
-* ```npm run start``` - to run www
-* ```npm run dev``` - to run development server
+* `npm run build` - to transpile code
+* `npm run start` - to run www
+* `npm run dev` - to run development server
 
-They look as follows
+`They look as follows`
 
 ![](screenshots/express/scripts.png)
 
-Running build script a dist folder appears in project, 
+> Running build script leads to dist folder appearing in the project, 
 then server can be launched from www by ```npm run start```
 or ```node /bin/www```
 
 ![](screenshots/express/entry_dist.png)
 
-![](screenshots/express/check_devmode.png)
+Checking dev server work:
+
+![](screenshots/express/devmode_check.png)
 </details>
 <br/>
 
 <details>
 <summary>Mongo installation</summary>
 
-First thing first i should replace systemctl utility, so it works without systemd
+First thing first i should replace systemctl utility, so it works without systemd:
 
 https://github.com/gdraheim/docker-systemctl-replacement
 
@@ -124,7 +128,7 @@ setUpDBConnection();
 ```
 
 Express doesn't serve http itself, there's a top layer that wraps express app in www file.
-It's helpful if i'd like to use https in the future
+It's helpful cause of possibility to use https in the future
 
 ![](screenshots/mongo/env.png)
 
