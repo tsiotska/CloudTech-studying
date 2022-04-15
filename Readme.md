@@ -145,3 +145,26 @@ Checking connection:
 ![](screenshots/mongo/check_connection.png)
 
 </details>
+<br/>
+
+<details>
+<br/>
+<summary>Setting up SSL</summary>
+
+![](screenshots/ssl/gen.png)
+
+![](screenshots/ssl/check_crt.png)
+
+![](screenshots/ssl/config.png)
+
+![](screenshots/ssl/issues_validation.png)
+
+![](screenshots/ssl/validation_succeed.png)
+
+![](screenshots/ssl/validation_succeed.png)
+
+![](screenshots/ssl/accept_risks.png)
+
+![](screenshots/ssl/welcome.png)
+
+</details>
