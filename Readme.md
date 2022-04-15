@@ -1,6 +1,7 @@
 ## LINUX NGINX MONGO NODE stack 
 
 <details>
+<br/>
 <summary>Nginx configuration</summary>
 
 `nginx/sites-available/default`
@@ -8,11 +9,13 @@
 > Here i have two locations: `/` to service static
 and `/api/` to service dynamic content in accordance 
 
-> `/api/` is proxying to `3000` port of `localhost`, there i'm gonna run backend application
+> `/api/` is proxying to `3000` port of `localhost`, there's backend application gonna be run 
 
 It doesn't have any CORS configured yet
 
 ![](screenshots/nginx/nginx_config.png)
+
+Check html dom and nginx work:
 
 ![](screenshots/nginx/html.png)
 
@@ -22,6 +25,7 @@ It doesn't have any CORS configured yet
 <br/>
 
 <details>
+<br/>
 <summary>Node express init</summary>
 
 > I should install http-server, that is Express.js, 
@@ -89,6 +93,7 @@ Checking its work:
 <br/>
 
 <details>
+<br/>
 <summary>Mongo installation</summary>
 
 First thing first i should replace systemctl utility, so it works without systemd:
@@ -114,6 +119,7 @@ Launched:
 <br/>
 
 <details>
+<br/>
 <summary>Mongo connection</summary>
 
 I installed ORM mongoose to operate with database
