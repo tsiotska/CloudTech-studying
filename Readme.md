@@ -51,7 +51,6 @@ Localhost/api, after restarting both nginx and node
 
 ![](screenshots/express/api_res.png)
 
-
 ### Amplified backend by enabling ES6 and hot reloading
 
 > ES6 code should be transpiled to ES5 so node could interpret it, 
@@ -70,17 +69,20 @@ It's incredibly important during development
 * `npm run start` - to run www
 * `npm run dev` - to run development server
 
-`They look as follows`
+They look as follows:
 
 ![](screenshots/express/scripts.png)
 
 > Running build script leads to dist folder appearing in the project, 
 then server can be launched from www by ```npm run start```
-or ```node /bin/www```
+or ```NODE_ENV=production node /bin/www```
 
 ![](screenshots/express/entry_dist.png)
 
-Checking dev server work:
+> Dev mode runs the same entry point `bin/www`, 
+taking master app not from `dist` but `src` folder
+<br/>
+Checking its work:
 
 ![](screenshots/express/devmode_check.png)
 </details>
