@@ -110,9 +110,7 @@ I chose to install Mongo 5.0:
 
 ![](screenshots/mongo/mongod_start.png)
 
-Launched: 
-
-![](screenshots/mongo/Finally_db_connected.png)
+Launched:
 
 ![](screenshots/mongo/mongod_process.png)
 </details>
@@ -134,11 +132,6 @@ The connection function is invoked from Master.js
 import {setUpDBConnection} from "./database.js";
 setUpDBConnection();
 ```
-
-Express doesn't serve http itself, there's a top layer that wraps express app in www file.
-It's helpful cause of possibility to use https in the future
-
-![](screenshots/mongo/env.png)
 
 Checking connection:
 
