@@ -1,0 +1,1 @@
+### This branch is not going to be used for merge with conflicts resolving
