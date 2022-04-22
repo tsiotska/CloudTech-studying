@@ -4,8 +4,6 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 
 var _express = _interopRequireDefault(require("express"));
 
-var _database = require("./database.js");
-
 var _httpErrors = _interopRequireDefault(require("http-errors"));
 
 var _path = _interopRequireDefault(require("path"));
@@ -16,6 +14,7 @@ var _morgan = _interopRequireDefault(require("morgan"));
 
 var _users = _interopRequireDefault(require("./routes/users.js"));
 
+// import {setUpDBConnection} from "./database.js";
 var master = (0, _express["default"])();
 master.use((0, _morgan["default"])('dev'));
 master.use(_express["default"].json());
@@ -44,5 +43,4 @@ master.use(function (err, req, res, next) {
   res.locals.error = req.app.get('env') === 'development' ? err : {};
   res.status(err.status || 500);
 });
-(0, _database.setUpDBConnection)();
 module.exports = master;

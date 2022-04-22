@@ -1,5 +1,5 @@
 import express from 'express';
-import {setUpDBConnection} from "./database.js";
+// import {setUpDBConnection} from "./database.js";
 import createError from 'http-errors';
 import path from 'path';
 import cookieParser from 'cookie-parser';
@@ -35,7 +35,5 @@ master.use(function (err, req, res, next) {
   res.locals.error = req.app.get('env') === 'development' ? err : {};
   res.status(err.status || 500);
 });
-
-setUpDBConnection();
 
 module.exports = master;

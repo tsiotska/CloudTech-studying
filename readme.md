@@ -1,1 +1,4 @@
-docker-compose up -v /c:/users/vitaliy/ssl/:/ssl
+
+To enter a container: 
+docker exec -t -i container_id  /bin/sh
+

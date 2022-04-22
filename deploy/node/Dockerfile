@@ -1,14 +1,13 @@
-FROM node:14.16.1
+FROM node:14-alpine as base
 
-WORKDIR /usr/src/app
-
-COPY ../../package*.json ./
-
+WORKDIR /node-app
+COPY ./package*.json ./
 RUN npm install
+COPY . .
 
-COPY ../../ .
 
-RUN npm build
+FROM base as production
 
-EXPOSE 8080
-# CMD [ "npm", "start" ]
+RUN npm run build
+EXPOSE 3000
+CMD [ "npm", "start" ]
