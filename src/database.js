@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
 
-export const dbUrl = 'mongodb://localhost:27017/users';
+export const dbUrl = 'mongodb://mongo:27017/users';
 
 export function setUpDBConnection() {
   mongoose.connect(dbUrl)
