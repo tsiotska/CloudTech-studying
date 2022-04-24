@@ -130,3 +130,5 @@ mongo:5.0
 Finally it also runs in linux as well
 
 ![](./screenshots/compose_up.png)
+
+![](./screenshots/mongo_runs.png)
