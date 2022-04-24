@@ -93,7 +93,7 @@ Checked docker desktop:
 
 ![](./screenshots/docker_running.png)
 
-######To run all containers in linux: 
+#### To run all containers in linux: 
 
 Made sure there's docker WSL integration enabled with my distro 
 
