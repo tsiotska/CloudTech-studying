@@ -1,0 +1,54 @@
+version: "3"
+
+services:
+  mongo:
+    image: mongo:5.0
+    ports:
+      - "27017:27017"
+    volumes:
+      # - /data/db:/data/db
+      - F:/test-db-output:/data/db
+      - ./deploy/mongo/mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=root
+      - MONGO_INITDB_ROOT_PASSWORD=1111
+      - MONGO_INITDB_DATABASE=users
+    restart: always
+    networks:
+      - app-network
+
+  node:
+    build:
+      context: ./
+      dockerfile: ./deploy/node/Dockerfile
+      target: production
+    ports:
+      - "3000:3000"
+    restart: always
+    depends_on:
+      - mongo
+    networks:
+      - app-network
+
+  nginx:
+    build:
+      context: ./
+      dockerfile: ./deploy/nginx/Dockerfile
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      # - /etc/nginx/ssl:/ssl
+      - C:/Users/Vitaliy/ssl/:/ssl
+    restart: unless-stopped
+    depends_on:
+      - node
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    external: true
+
+
+
