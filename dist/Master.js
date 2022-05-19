@@ -27,7 +27,7 @@ master.use(_express["default"]["static"](_path["default"].join(__dirname, 'publi
 
 master.use('/', function (req, res) {
   var superTestObj = {
-    superTestKey: "I am your super test data!"
+    superTestKey: "I am your super test data.tf!"
   };
   res.send(superTestObj);
 });
@@ -38,7 +38,7 @@ master.use(function (req, res, next) {
 }); // error handler
 
 master.use(function (err, req, res, next) {
-  // set locals, only providing error in development
+  // set locals.tf, only providing error in development
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
   res.status(err.status || 500);

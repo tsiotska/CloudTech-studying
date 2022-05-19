@@ -17,7 +17,7 @@ master.use(express.static(path.join(__dirname, 'public')));
 // In this master i dont have view, i'm goint to use frontend framework
 // Test route
 master.use('/', (req, res) => {
-  const superTestObj = {superTestKey: "I am your super test data!"};
+  const superTestObj = {superTestKey: "I am your super test data.tf!"};
   res.send(superTestObj);
 });
 
@@ -30,7 +30,7 @@ master.use(function (req, res, next) {
 
 // error handler
 master.use(function (err, req, res, next) {
-  // set locals, only providing error in development
+  // set locals.tf, only providing error in development
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
   res.status(err.status || 500);
