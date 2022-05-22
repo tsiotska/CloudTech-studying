@@ -35,12 +35,13 @@ to declare multiple similar resources
 >After repos had been created, removed repo state from terraform, so it'd not be destroyed
 when switching it to a data source
 
-Created repositories: 
+#### Created repositories: 
 
 ![](screenshots/repos.png)
 
 <br/> 
-##### While building images, faced issue below and couldn't fix it.
+  
+#### While building images, faced issue below and couldn't fix it.
 
 ![](screenshots/issue.png)
 `docker_registry_image` strips the file permissions during handling of the context archive
@@ -48,9 +49,9 @@ Created repositories:
 https://github.com/kreuzwerker/terraform-provider-docker/issues/293
 
 <br/>
+  
 Thus i resorted to traditional method: built images using docker-compose,
 tagged and push with docker cli commands
-<br/>
 
 ![](screenshots/tags.png)
 ![](screenshots/aws_nginx.png)
