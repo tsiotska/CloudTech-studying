@@ -7,7 +7,9 @@
 ![](screenshots/registered.png)
 ![](screenshots/user.png)
 
+
 Also AWS CLI installed
+
 ![](screenshots/aws_version.png)
 
 </details>
@@ -21,7 +23,8 @@ Also AWS CLI installed
 > aws_caller_identity and aws_ecr_authorization_token are data sources that automatically
 exports credentials for an ECR
 
-<br/> 
+<br/>
+
 Defined variable of repositories as list and used the `for_each` meta-argument and `toset` function
 to declare multiple similar resources
 
@@ -32,10 +35,12 @@ to declare multiple similar resources
 >After repos had been created, removed repo state from terraform, so it'd not be destroyed
 when switching it to a data source
 
+Created repositories: 
+
 ![](screenshots/repos.png)
 
 <br/> 
-While building images, faced issue below and couldn't fix it.
+##### While building images, faced issue below and couldn't fix it.
 
 ![](screenshots/issue.png)
 `docker_registry_image` strips the file permissions during handling of the context archive
@@ -45,6 +50,7 @@ https://github.com/kreuzwerker/terraform-provider-docker/issues/293
 <br/>
 Thus i resorted to traditional method: built images using docker-compose,
 tagged and push with docker cli commands
+<br/>
 
 ![](screenshots/tags.png)
 ![](screenshots/aws_nginx.png)
