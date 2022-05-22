@@ -18,6 +18,7 @@ Also AWS CLI installed
 <br/>
 <summary>Elastic Container Registry</summary>
 
+#### AWS and docker provider configuration with credentials 
 
 ![](screenshots/provider.png)
 > aws_caller_identity and aws_ecr_authorization_token are data sources that automatically
