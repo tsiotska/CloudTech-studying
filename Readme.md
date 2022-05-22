@@ -31,7 +31,7 @@ to declare multiple similar resources
 
 ![](screenshots/vars.png)
 
-![](screenshots/erc.png)
+![](screenshots/ecr.png)
 
 >After repos had been created, removed repo state from terraform, so it'd not be destroyed
 when switching it to a data source
@@ -58,5 +58,11 @@ tagged and push with docker cli commands
 ![](screenshots/aws_nginx.png)
 ![](screenshots/aws_node.png)
 ![](screenshots/aws_mongo.png)
+
+</details>
+<br/>
+<details>
+<br/>
+<summary>Elastic Container Service</summary>
 
 </details>
