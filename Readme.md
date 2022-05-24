@@ -2,6 +2,7 @@
 
 <details>
 <summary>Registration and User creation</summary>
+<br/>
 
 ![](screenshots/registered.png)
 ![](screenshots/user.png)
@@ -63,10 +64,33 @@ tagged and push with docker cli commands
 <details>
 <summary>Elastic Container Service</summary>
 
-Having second service i'd like to separate infra as follows:
+**Having second service i'd like to separate infra as follows:**
 
 ![](screenshots/struct.png)
 > So it consists of ECR and ECS modules with its own independent state  
-and aws-base-module that represents abstraction
+and aws-base-module that represents abstraction.
+> Note: the code is placed under terraform-aws folder 
+
+**For ECS there have been created next resources:**
+* aws_iam_role (policy_arn: AmazonECSTaskExecutionRolePolicy)
+* aws_ecs_cluster
+* aws_ecs_service with load_balancer and network_configuration 
+* aws_security_group for service network and load balancer
+* single aws_ecs_task_definition with containers definitions referencing mongo, node, nginx images
+* aws_default_vpc and aws_default_subnet
+
+<br/>
+
+**Referencing by the DNS name it throws 503 error, 
+as my nginx expects to work with ssl certificate 
+and database requires initialization and output place specified, which is not done for now**
+
+**But there are following successes:**
+![](screenshots/service.png)
+![](screenshots/task.png)
+![](screenshots/containers.png)
+![](screenshots/lb.png)
+![](screenshots/group.png)
+![](screenshots/vpc.png)
 
 </details>
