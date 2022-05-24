@@ -12,7 +12,9 @@ Also AWS CLI installed
 ![](screenshots/aws_version.png)
 
 </details>
+
 <br/>
+
 <details>
 
 <summary>Elastic Container Registry</summary>
@@ -41,7 +43,7 @@ when switching it to a data source
 
 <br/> 
   
-#### While building images, faced issue below and couldn't fix it.
+**While building images, faced issue below and couldn't fix it.**
 
 ![](screenshots/issue.png)
 `docker_registry_image` strips the file permissions during handling of the context archive
@@ -59,17 +61,21 @@ tagged and push with docker cli commands
 ![](screenshots/aws_mongo.png)
 
 </details>
+
 <br/>
 
 <details>
 <summary>Elastic Container Service</summary>
+<br/>
 
 **Having second service i'd like to separate infra as follows:**
 
 ![](screenshots/struct.png)
 > So it consists of ECR and ECS modules with its own independent state  
 and aws-base-module that represents abstraction.
-> Note: the code is placed under terraform-aws folder 
+
+ECS module is too way contentful, so:
+https://github.com/tsiotska/CloudTech-studying/blob/aws/terraform-aws/ecs-module/main.tf
 
 **For ECS there have been created next resources:**
 * aws_iam_role (policy_arn: AmazonECSTaskExecutionRolePolicy)
@@ -85,12 +91,19 @@ and aws-base-module that represents abstraction.
 as my nginx expects to work with ssl certificate 
 and database requires initialization and output place specified, which is not done for now**
 
-**But there are following successes:**
+**But there are previously described successes:**
+<br/>
+
 ![](screenshots/service.png)
+***
 ![](screenshots/task.png)
+***
 ![](screenshots/containers.png)
+***
 ![](screenshots/lb.png)
+***
 ![](screenshots/group.png)
+***
 ![](screenshots/vpc.png)
 
 </details>
