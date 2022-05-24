@@ -1,12 +1,10 @@
 ## Deploying an AWS ECS Cluster with Terraform
 
 <details>
-<br/>
 <summary>Registration and User creation</summary>
 
 ![](screenshots/registered.png)
 ![](screenshots/user.png)
-
 
 Also AWS CLI installed
 
@@ -15,7 +13,7 @@ Also AWS CLI installed
 </details>
 <br/>
 <details>
-<br/>
+
 <summary>Elastic Container Registry</summary>
 
 #### AWS and docker provider configuration with credentials 
@@ -61,8 +59,14 @@ tagged and push with docker cli commands
 
 </details>
 <br/>
+
 <details>
-<br/>
 <summary>Elastic Container Service</summary>
+
+Having second service i'd like to separate infra as follows:
+
+![](screenshots/struct.png)
+> So it consists of ECR and ECS modules with its own independent state  
+and aws-base-module that represents abstraction
 
 </details>

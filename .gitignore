@@ -1,1 +1,6 @@
 .idea
+terraform-aws/ecr-module/.terraform
+terraform-aws/ecs-module/.terraform
+terraform.tfstate*
+.terraform.lock*
+.terraform
