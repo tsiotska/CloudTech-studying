@@ -1,0 +1,20 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Infra init') {
+            steps {
+                dir('./terraform-aws/ecs-module') {
+                    sh 'terraform init'
+                }
+            }
+        }
+        stage('Infra Plan') {
+            steps {
+                dir('./terraform-aws/ecs-module') {
+                    sh 'terraform plan'
+                }
+            }
+        }
+    }
+}
