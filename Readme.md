@@ -1,10 +1,9 @@
 ## Jenkins pipeline running terraform infra
 
 **Installed Jenkins in WSL2 locally, also port forwarded to the
-host machine and exposed to the internet using `ngrok` tool**
-> Note: ngrok doesn't provide static ip address
+host machine and exposed to the internet using `pagekite` tool with free trial**
 
-![](screenshots/jenkins_running.png)
+![](screenshots/pagekite.png)
 
 **Next, moved to jenkins bash and generated deploy keys**
 
