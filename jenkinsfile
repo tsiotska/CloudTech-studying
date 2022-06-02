@@ -1,18 +1,52 @@
 pipeline {
     agent any
 
+    parameters {
+        choice(
+                choices: ['plan', 'apply', 'destroy'],
+                description: 'Run plan / apply / destroy',
+                name: 'ACTION'
+        )
+    }
+
     stages {
-        stage('Infra init') {
+        stage('Infra Init') {
             steps {
                 dir('./terraform-aws/ecs-module') {
                     sh 'terraform init'
                 }
             }
         }
+
         stage('Infra Plan') {
+            when {
+                environment name: 'ACTION', value: 'plan';
+            }
             steps {
                 dir('./terraform-aws/ecs-module') {
                     sh 'terraform plan'
+                }
+            }
+        }
+
+        stage('Infra Apply') {
+            when {
+                environment name: 'ACTION', value: 'apply';
+            }
+            steps {
+                dir('./terraform-aws/ecs-module') {
+                    sh 'terraform apply -auto-approve'
+                }
+            }
+        }
+
+        stage('Infra Destroy') {
+            when {
+                environment name: 'ACTION', value: 'destroy';
+            }
+            steps {
+                dir('./terraform-aws/ecs-module') {
+                   sh 'terraform destroy -auto-approve'
                 }
             }
         }
