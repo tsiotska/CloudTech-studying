@@ -64,16 +64,15 @@ resource "aws_ecs_task_definition" "task" {
     }
   ])
 
-  volumes = [
-    {
-      name = "efs-mongo-init",
+  volume {
+    name = "efs-mongo-init"
 
-      efs_volume_configuration = {
-        file_system_id = aws_efs_file_system.efs_mongo.id
-        root_directory = "../../deploy/mongo"
-      }
+    efs_volume_configuration {
+      file_system_id = aws_efs_file_system.efs_mongo.id
+      root_directory = "../../deploy/mongo"
     }
-  ]
+  }
+
 
   requires_compatibilities = ["FARGATE"]
   network_mode             = "awsvpc"

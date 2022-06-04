@@ -1,6 +1,6 @@
 resource "aws_efs_file_system" "efs_mongo" {}
 
-resource "aws_efs_mount_target" "efs_mongo_target" {
+resource "aws_efs_mount_target" "efs_mongo_target_a" {
   count = 3
 
   file_system_id = aws_efs_file_system.efs_mongo.id
@@ -11,7 +11,7 @@ resource "aws_efs_mount_target" "efs_mongo_target" {
   ]*/
 }
 
-resource "aws_efs_mount_target" "efs_mongo_target" {
+resource "aws_efs_mount_target" "efs_mongo_target_b" {
   count = 3
 
   file_system_id = aws_efs_file_system.efs_mongo.id
@@ -22,7 +22,7 @@ resource "aws_efs_mount_target" "efs_mongo_target" {
    ]*/
 }
 
-resource "aws_efs_mount_target" "efs_mongo_target" {
+resource "aws_efs_mount_target" "efs_mongo_target_c" {
   count = 3
 
   file_system_id = aws_efs_file_system.efs_mongo.id
