@@ -1,37 +1,24 @@
 resource "aws_efs_file_system" "efs_mongo" {}
 
-resource "aws_efs_mount_target" "efs_mongo_target_a" {
-  count = 3
+resource "aws_efs_mount_target" "efs_mongo_target" {
+  for_each = toset(["a", "b", "c"])
 
   file_system_id = aws_efs_file_system.efs_mongo.id
-  subnet_id      = aws_default_subnet.default_subnet_a.id
-
- /* security_groups = [
-    aws_security_group.efs.id,
-  ]*/
-}
-
-resource "aws_efs_mount_target" "efs_mongo_target_b" {
-  count = 3
-
-  file_system_id = aws_efs_file_system.efs_mongo.id
-  subnet_id      = aws_default_subnet.default_subnet_b.id
+  subnet_id      = "aws_default_subnet.default_subnet_${each.key}.id"
 
   /* security_groups = [
      aws_security_group.efs.id,
    ]*/
 }
 
-resource "aws_efs_mount_target" "efs_mongo_target_c" {
-  count = 3
-
+/*resource "aws_efs_mount_target" "efs_mongo_target_c" {
   file_system_id = aws_efs_file_system.efs_mongo.id
   subnet_id      = aws_default_subnet.default_subnet_c.id
 
-  /* security_groups = [
+  *//* security_groups = [
      aws_security_group.efs.id,
-   ]*/
-}
+   ]*//*
+}*/
 /*
 resource "aws_security_group" "efs" {
   name        = "efs-mnt"
