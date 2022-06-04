@@ -29,3 +29,7 @@ output "aws_ecr_authorization_token" {
 output "aws_ecr_url" {
   value = local.aws_ecr_url
 }
+
+output "aws_domain_name" {
+  value = "insanevitalik"
+}
