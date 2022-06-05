@@ -24,6 +24,10 @@ resource "aws_ecs_task_definition" "task" {
       mountPoints = [
         {
           sourceVolume : "efs-mongo-init",
+          containerPath : "/data.tf/db"
+        },
+        {
+          sourceVolume : "efs-data-storage",
           containerPath : "/docker-entrypoint-initdb.d"
         }
       ]
@@ -69,7 +73,7 @@ resource "aws_ecs_task_definition" "task" {
 
     efs_volume_configuration {
       file_system_id = aws_efs_file_system.efs_mongo.id
-      root_directory = "../../deploy/mongo"
+      root_directory = "/"
     }
   }
 
@@ -95,11 +99,9 @@ resource "aws_ecs_service" "my_first_service" {
   }
 
   network_configuration {
-    subnets = [
-      aws_default_subnet.default_subnet_a.id,
-      /*aws_default_subnet.default_subnet_b.id,
-      aws_default_subnet.default_subnet_c.id*/
-    ]
+    # Only internal private subnet
+    subnets = aws_subnet.private.*.id
+
     assign_public_ip = true
     security_groups  = [aws_security_group.service_security_group.id]
   }

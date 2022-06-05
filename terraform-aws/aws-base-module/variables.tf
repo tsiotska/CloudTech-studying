@@ -4,6 +4,11 @@ variable "region" {
   default = "eu-central-1"
 }
 
+variable "az_count" {
+  default     = "3"
+  description = "number of availability zones in region"
+}
+
 variable "repository_list" {
   description = "List of repository names"
   type = list
@@ -12,6 +17,10 @@ variable "repository_list" {
 
 output "region" {
   value = var.region
+}
+
+output "az_count" {
+  value = var.az_count
 }
 
 output "repository_list" {
@@ -28,8 +37,4 @@ output "aws_ecr_authorization_token" {
 
 output "aws_ecr_url" {
   value = local.aws_ecr_url
-}
-
-output "aws_domain_name" {
-  value = "insanevitalik"
 }
