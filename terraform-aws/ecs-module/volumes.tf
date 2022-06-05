@@ -25,7 +25,7 @@ resource "aws_efs_mount_target" "efs_mongo_target" {
 resource "aws_security_group" "efs" {
   name        = "efs-mnt"
   description = "Allows NFS traffic from instances within the VPC."
-  vpc_id      = aws_default_vpc.default_vpc.id
+  vpc_id      = aws_vpc.vpc.id
 
   ingress {
     from_port = 2049
