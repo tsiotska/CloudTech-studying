@@ -16,6 +16,10 @@ resource "aws_alb" "application_load_balancer" {
 
 # Firewall rules for alb
 resource "aws_security_group" "load_balancer_security_group" {
+  name        = "load-balancer-security-group"
+  description = "controls access to the ALB"
+  vpc_id      = aws_vpc.vpc.id
+
   ingress {
     from_port   = 80
     to_port     = 80
@@ -33,11 +37,11 @@ resource "aws_security_group" "load_balancer_security_group" {
 
 # Where to direct traffic to (fixed ip addr)
 resource "aws_lb_target_group" "target_group" {
-  name     = "target-group"
-  port     = 80
-  protocol = "HTTP"
+  name        = "target-group"
+  port        = 80
+  protocol    = "HTTP"
   target_type = "ip"
-  vpc_id   = aws_vpc.vpc.id
+  vpc_id      = aws_vpc.vpc.id
 
   health_check {
     path     = "/"
