@@ -22,13 +22,13 @@ resource "aws_ecs_task_definition" "task" {
         }
       ],
       mountPoints = [
-        {
+        /*{
           sourceVolume : "efs-mongo-init",
-          containerPath : "/data.tf/db"
-        },
+          containerPath : "/docker-entrypoint-initdb.d"
+        },*/
         {
           sourceVolume : "efs-data-storage",
-          containerPath : "/docker-entrypoint-initdb.d"
+          containerPath : "/data.tf/db"
         }
       ]
     },
@@ -68,15 +68,21 @@ resource "aws_ecs_task_definition" "task" {
     }
   ])
 
-  volume {
+  /*volume {
     name = "efs-mongo-init"
-
     efs_volume_configuration {
       file_system_id = aws_efs_file_system.efs_mongo.id
       root_directory = "/"
     }
-  }
+  }*/
 
+  volume {
+    name = "efs-data-storage"
+    efs_volume_configuration {
+      file_system_id = aws_efs_file_system.efs_mongo.id
+      root_directory = "/db"
+    }
+  }
 
   requires_compatibilities = ["FARGATE"]
   network_mode             = "awsvpc"
