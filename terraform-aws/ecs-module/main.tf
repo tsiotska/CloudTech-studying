@@ -114,6 +114,10 @@ resource "aws_ecs_service" "my_first_service" {
 }
 
 resource "aws_security_group" "service_security_group" {
+  name        = "service-security-group"
+  description = "controls access to the service"
+  vpc_id      = aws_vpc.vpc.id
+
   ingress {
     from_port       = 0
     to_port         = 0
