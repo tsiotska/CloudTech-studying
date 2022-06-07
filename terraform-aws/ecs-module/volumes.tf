@@ -1,4 +1,4 @@
-resource "aws_efs_file_system" "efs_mongo" {}
+/*resource "aws_efs_file_system" "efs_mongo" {}
 # for_each = toset(aws_subnet.private.*.id)
 resource "aws_efs_mount_target" "efs_mongo_target" {
   count             = module.aws_module.az_count
@@ -8,10 +8,10 @@ resource "aws_efs_mount_target" "efs_mongo_target" {
   subnet_id      = aws_subnet.private[count.index].id
   # depends_on     = [aws_subnet.private[count.index]]
 
-  /* security_groups = [
+  security_groups = [
      aws_security_group.efs.id,
-   ]*/
-}
+  ]
+}*/
 
 /*resource "aws_efs_mount_target" "efs_mongo_target_c" {
   file_system_id = aws_efs_file_system.efs_mongo.id
