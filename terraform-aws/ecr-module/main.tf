@@ -31,6 +31,7 @@ data "aws_ecr_repository" "repository" {
 */
 
 ## Build docker images and push to ECR
+# https://github.com/kreuzwerker/terraform-provider-docker/issues/293
 /*resource "docker_registry_image" "image" {
   for_each = toset(var.repository_list)
   name = "${aws_ecr_repository.repository[each.key].repository_url}:latest"

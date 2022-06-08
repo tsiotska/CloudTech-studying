@@ -1,3 +1,9 @@
 node_modules
 deploy
 .git
+.idea
+images
+public
+terraform-aws
+readme.md
+jenkinsfile

@@ -14,21 +14,21 @@ resource "aws_ecs_task_definition" "task" {
   cpu                      = 256
   execution_role_arn       = aws_iam_role.ecsTaskExecutionRole.arn
 
-  container_definitions    = jsonencode([
-    /* {
-       name : "aws_mongo",
-       # image : aws_ecr_repository.repository["aws_mongo"].repository_url,
-       // mongo url below
-       image : "${module.aws_module.aws_ecr_url}/${element(module.aws_module.repository_list, 0)}:latest",
-       essential : true,
-       portMappings : [
-         {
-           "containerPort" : 27017,
-           "hostPort" : 27017
-         }
-       ],
-       mountPoints = [
-         *//*{
+  container_definitions = jsonencode([
+    {
+      name : "aws_mongo",
+      # image : aws_ecr_repository.repository["aws_mongo"].repository_url,
+      // mongo url below
+      image : "${module.aws_module.aws_ecr_url}/${element(module.aws_module.repository_list, 0)}:latest",
+      essential : true,
+      portMappings : [
+        {
+          "containerPort" : 27017,
+          "hostPort" : 27017
+        }
+      ]/*,
+      mountPoints = [
+        *//*{
           sourceVolume : "efs-mongo-init",
           containerPath : "/docker-entrypoint-initdb.d"
         },*//*
@@ -36,7 +36,7 @@ resource "aws_ecs_task_definition" "task" {
           sourceVolume : "efs-data-storage",
           containerPath : "/data.tf/db"
         }
-      ]
+      ]*/
     },
     {
       name : "aws_node",
@@ -54,7 +54,7 @@ resource "aws_ecs_task_definition" "task" {
           "condition" : "START"
         }
       ]
-    },*/
+    },
     {
       name : "aws_nginx",
       image : "${module.aws_module.aws_ecr_url}/${element(module.aws_module.repository_list, 2)}:latest",
@@ -64,14 +64,13 @@ resource "aws_ecs_task_definition" "task" {
           "containerPort" : 80,
           "hostPort" : 80
         }
-      ]
-      /*,
+      ],
       dependsOn : [
         {
           "containerName" : "aws_node",
           "condition" : "START"
         }
-      ]*/
+      ]
     }
   ])
 
@@ -93,13 +92,13 @@ resource "aws_ecs_task_definition" "task" {
 }
 
 resource "aws_ecs_service" "service" {
-  depends_on             = [aws_lb_listener.listener]
-  name                   = "service"
+  depends_on      = [aws_lb_listener.listener]
+  name            = "service"
   # enable_execute_command = true
-  cluster                = aws_ecs_cluster.cluster.id
-  task_definition        = aws_ecs_task_definition.task.arn
-  launch_type            = "FARGATE"
-  desired_count          = 1
+  cluster         = aws_ecs_cluster.cluster.id
+  task_definition = aws_ecs_task_definition.task.arn
+  launch_type     = "FARGATE"
+  desired_count   = 1
 
   load_balancer {
     target_group_arn = aws_lb_target_group.target_group.id
@@ -113,7 +112,7 @@ resource "aws_ecs_service" "service" {
     assign_public_ip = true
 
     #subnets          = aws_subnet.private.*.id
-    security_groups  = [aws_security_group.service_security_group.id]
+    security_groups = [aws_security_group.service_security_group.id]
   }
 }
 

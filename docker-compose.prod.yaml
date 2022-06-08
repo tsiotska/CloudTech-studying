@@ -1,0 +1,17 @@
+version: "3"
+
+services:
+  mongo:
+    image: "${aws_identity}.dkr.ecr.${aws_region}.amazonaws.com/aws_mongo:latest"
+
+  node:
+    image: "${aws_identity}.dkr.ecr.${aws_region}.amazonaws.com/aws_node:latest"
+
+  nginx:
+    build:
+      context: ./
+      dockerfile: ./deploy/nginx/Dockerfile
+      target: production
+    image: "${aws_identity}.dkr.ecr.${aws_region}.amazonaws.com/aws_nginx:latest"
+
+
