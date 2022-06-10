@@ -7,9 +7,9 @@ services:
       dockerfile: ./deploy/mongo/Dockerfile
     ports:
       - "27017:27017"
-    volumes:
+    # volumes:
       # - /data.tf/db:/data.tf/db
-      - F:/test-db-output:/data.tf/db
+      # - F:/test-db-output:/data.tf/db
       # - ./deploy/mongo/mongo.init.js:/docker-entrypoint-initdb.d/mongo.init.js
     environment:
       - MONGO_INITDB_ROOT_USERNAME=root

@@ -5,21 +5,20 @@ resource "aws_vpc" "vpc" {
   cidr_block = "172.16.0.0/16"
 }
 
-# Create var.az_count private subnets, each in a different AZ
-resource "aws_subnet" "private" {
-  count             = module.aws_module.az_count
-  cidr_block        = cidrsubnet(aws_vpc.vpc.cidr_block, 8, count.index)
-  availability_zone = data.aws_availability_zones.available.names[count.index]
-  vpc_id            = aws_vpc.vpc.id
-}
-
-# Create var.az_count public subnets, each in a different AZ
 resource "aws_subnet" "public" {
   count                   = module.aws_module.az_count
   cidr_block              = cidrsubnet(aws_vpc.vpc.cidr_block, 8, module.aws_module.az_count + count.index)
   availability_zone       = data.aws_availability_zones.available.names[count.index]
   vpc_id                  = aws_vpc.vpc.id
   map_public_ip_on_launch = true
+}
+
+
+resource "aws_subnet" "private" {
+  count             = module.aws_module.az_count
+  cidr_block        = cidrsubnet(aws_vpc.vpc.cidr_block, 8, count.index)
+  availability_zone = data.aws_availability_zones.available.names[count.index]
+  vpc_id            = aws_vpc.vpc.id
 }
 
 # Internet Gateway for the public subnet

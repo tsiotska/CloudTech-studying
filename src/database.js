@@ -1,6 +1,7 @@
 import mongoose from 'mongoose';
 
-export const dbUrl = 'mongodb://mongo:27017/users';
+const host = process.env.AWS_VPC ? 'localhost' : 'mongo'
+export const dbUrl = `mongodb://${host}:27017/users`;
 
 export function setUpDBConnection() {
   mongoose.connect(dbUrl)

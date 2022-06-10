@@ -12,7 +12,7 @@ resource "aws_ecs_task_definition" "task" {
   network_mode             = "awsvpc"
   memory                   = 512
   cpu                      = 256
-  execution_role_arn       = aws_iam_role.ecsTaskExecutionRole.arn
+  execution_role_arn       = aws_iam_role.ecs_task_execution_role.arn
 
   container_definitions = jsonencode([
     {
@@ -26,7 +26,8 @@ resource "aws_ecs_task_definition" "task" {
           "containerPort" : 27017,
           "hostPort" : 27017
         }
-      ]/*,
+      ]
+      /*,
       mountPoints = [
         *//*{
           sourceVolume : "efs-mongo-init",
@@ -92,7 +93,7 @@ resource "aws_ecs_task_definition" "task" {
 }
 
 resource "aws_ecs_service" "service" {
-  depends_on      = [aws_lb_listener.listener]
+  depends_on      = [aws_lb_listener.listener, aws_iam_role_policy_attachment.ecs_task_execution_role_policy]
   name            = "service"
   # enable_execute_command = true
   cluster         = aws_ecs_cluster.cluster.id
@@ -107,11 +108,8 @@ resource "aws_ecs_service" "service" {
   }
 
   network_configuration {
-    # Only internal private subnet
-    subnets          = aws_subnet.public.*.id
+    subnets          = aws_subnet.private.*.id
     assign_public_ip = true
-
-    #subnets          = aws_subnet.private.*.id
     security_groups = [aws_security_group.service_security_group.id]
   }
 }
