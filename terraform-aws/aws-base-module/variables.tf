@@ -1,6 +1,7 @@
 variable "region" {
   description = "AWS region to create resources in"
   type  = string
+  # default = "us-east-1"
   default = "eu-central-1"
 }
 
@@ -18,6 +19,10 @@ variable "repository_list" {
 output "region" {
   value = var.region
 }
+
+/*output "provider" {
+  value = aws.us_east_1
+}*/
 
 output "az_count" {
   value = var.az_count

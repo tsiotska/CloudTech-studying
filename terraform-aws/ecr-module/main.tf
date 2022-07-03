@@ -22,6 +22,12 @@ resource "aws_ecr_repository" "repository" {
   }
 }
 
+/*resource "aws_ecrpublic_repository" "repository" {
+  for_each             = toset(module.aws_module.repository_list)
+  provider             = module.aws_module.provider // aws.us_east_1
+  repository_name      = each.key
+}*/
+
 ## After repository creation use it as data source, but remove repo from state before
 /*
 data "aws_ecr_repository" "repository" {

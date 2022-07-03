@@ -63,16 +63,3 @@ resource "aws_route_table_association" "private" {
   subnet_id      = element(aws_subnet.private.*.id, count.index)
   route_table_id = element(aws_route_table.private.*.id, count.index)
 }
-
-/*
-resource "aws_default_subnet" "default_subnet_a" {
-  availability_zone = "${module.aws_module.region}a"
-}
-
-resource "aws_default_subnet" "default_subnet_b" {
-  availability_zone = "${module.aws_module.region}b"
-}
-
-resource "aws_default_subnet" "default_subnet_c" {
-  availability_zone = "${module.aws_module.region}c"
-}*/
