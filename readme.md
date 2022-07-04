@@ -1,4 +1,3 @@
-Changes
 **To run locally with https:**
 
 `docker-compose -f docker-compose.yaml up --build`
